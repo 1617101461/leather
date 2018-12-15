@@ -164,6 +164,8 @@ return [
         //filemanajer
         UniSharp\LaravelFilemanager\LaravelFilemanagerServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
+        //datatables
+        Yajra\DataTables\DataTablesServiceProvider::class,
 
     ],
 
@@ -217,6 +219,8 @@ return [
         'Alert' => UxWeb\SweetAlert\SweetAlert::class,
         //filemanajer
         'Image' => Intervention\Image\Facades\Image::class,
+        //datatables
+        'DataTables' => Yajra\DataTables\Facades\DataTables::class,
 
     ],
 

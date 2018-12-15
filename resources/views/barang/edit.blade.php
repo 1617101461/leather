@@ -13,6 +13,16 @@
 			  		<input name="_method" type="hidden" value="PATCH">
         			{{ csrf_field() }}
 			  		
+			  		<div class="form-group {{ $errors->has('kode_barang') ? ' has-error' : '' }}">
+			  			<label class="control-label">Kode Barang</label>	
+			  			<input type="text" name="kode_barang" class="form-control" value="{{ $barangs->kode_barang }}"  required>
+			  			@if ($errors->has('kode_barang'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('kode_barang') }}</strong>
+                            </span>
+                        @endif
+			  		</div>
+
 			  		<div class="form-group">
                                 <label for="cc-payment" class="control-label mb-1">Gambar</label>
                                 @if (isset($barangs) && $barangs->gambar)
@@ -52,6 +62,16 @@
 			  			@if ($errors->has('harga'))
                             <span class="help-block">
                                 <strong>{{ $errors->first('harga') }}</strong>
+                            </span>
+                        @endif
+			  		</div>
+
+			  		<div class="form-group {{ $errors->has('stok') ? ' has-error' : '' }}">
+			  			<label class="control-label">Stok</label>	
+			  			<input type="text" name="stok" class="form-control" value="{{ $barangs->stok }}"  required>
+			  			@if ($errors->has('stok'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('stok') }}</strong>
                             </span>
                         @endif
 			  		</div>

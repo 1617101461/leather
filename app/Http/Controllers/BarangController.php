@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use DB;
+use Carbon\Carbon;
+use Yajra\DataTables\Html\Builder;
+use Yajra\DataTables\DataTables;
 use App\kategoris;
 use App\barangs;
 use File;
@@ -43,10 +47,12 @@ class BarangController extends Controller
             Alert::success('Data Successfully Saved','Good Job!')->autoclose(1700);
 
         $this->validate($request,[
+            'kode_barang' => 'required',
             'gambar' => 'required',
             'nama_barang' => 'required',
             'deskripsi' => 'required|min:2',
             'harga' => 'required',
+            'stok' => 'required',
             'id_kategoris' => 'required',
             'slug' => '',
 
@@ -61,9 +67,11 @@ class BarangController extends Controller
             $uploadSuccess = $file->move($destinationPath, $filename);
             $barangs->gambar = $filename;
         }   
+            $barangs->kode_barang = $request->kode_barang;
             $barangs->nama_barang = $request->nama_barang;   
             $barangs->deskripsi = $request->deskripsi;
             $barangs->harga = $request->harga;
+            $barangs->stok = $request->stok;   
             $barangs->slug =str_slug($request->nama_barang,'-');
             $barangs->id_kategoris = $request->id_kategoris;
             $barangs->save();
@@ -107,10 +115,12 @@ class BarangController extends Controller
             Alert::success('Data Successfully Changed','Good Job!')->autoclose(1700);
 
         $this->validate($request,[
+             'kode_barang' => '',
              'gambar' => '',
              'nama_barang' => 'required',
              'deskripsi' => 'required',
              'harga' => 'required',
+             'stok' => '',
              'id_kategoris' => 'required',
              'slug' => '',
 
@@ -135,9 +145,11 @@ class BarangController extends Controller
         }
         $barangs->gambar = $filename;
         }
+            $barangs->kode_barang = $request->kode_barang;
             $barangs->nama_barang = $request->nama_barang;
             $barangs->deskripsi = $request->deskripsi;
             $barangs->harga = $request->harga;
+            $barangs->stok = $request->stok;
             $barangs->slug =str_slug($request->nama_barang,'-');
             $barangs->id_kategoris = $request->id_kategoris;
             $barangs->save();

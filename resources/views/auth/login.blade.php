@@ -1,14 +1,14 @@
 @extends('layouts.login')
 @section('content')
 <div class="limiter">
-        <div class="container-login100" style="background-image: url('assets/frontend/images/FB_IMG_15361098794607620.png');">
+        <div class="container-login100" style="background-image: url('images/FB_IMG_15361098794607620.jpg');">
             <div class="wrap-login100 p-t-190 p-b-30">
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
                 <form class="login100-form validate-form">
                     <div class="login100-form-avatar">
-                        <img src="assets/frontend/images/FB_IMG_15361098794607620.png" alt="">
+                        <img src="images/FB_IMG_15361098794607620.jpg" alt="">
                     </div>
 
                     <span class="login100-form-title p-t-20 p-b-45">
@@ -52,10 +52,8 @@
                         <button class="login100-form-btn">
                             Login
                         </button>
-                         <a class="btn btn-link" href="{{ route('register') }}">
-                                    Register ?
-                                </a>
-                    </div>                    
+                    </div>
+                 
                         </a>
                     </div>
                 </form>

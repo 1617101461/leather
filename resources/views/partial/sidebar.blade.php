@@ -1,87 +1,49 @@
-<div class="sidebar">
-      <!-- Sidebar user panel (optional) -->
-      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-        <div class="image">
-          <img src="dist/img/logo.jpg" class="img-circle elevation-2" alt="">
-        </div>
-        <div class="info">
-          <a href="#" class="fa fa-love">AS LEATHER</a>
-        </div>
-      </div>
-
-      <!-- Sidebar Menu -->
-      <nav class="mt-2">
-        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
-                <li class="nav-item has-treeview menu-open">
-            <a href="/home" class="nav-link active">
-              <i class="nav-icon fa fa-dashboard"></i>
-              <p>
-                Dashboard
-              </p>
-            </a>
+<nav class="sidebar sidebar-offcanvas" id="sidebar">
+        <ul class="nav">
+          <li class="nav-item nav-profile">
+            <div class="nav-link">
+              <div class="user-wrapper">
+                <div class="profile-image">
+                  <img src="{{asset ('assets/admin/images/FB_IMG_15361098794607620.png') }}" alt="profile image">
+                </div>
+                <div class="text-wrapper">
+                  <p class="profile-name">AS LEATHER</p>
+                  <div>
+                    <small class="designation text-muted">Admin</small>
+                    <span class="status-indicator online"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
           <li class="nav-item">
-            <a href="{{ route('barang.index')}}" class="nav-link">
-              <i class="nav-icon  fa fa-cart-plus"></i>
-              <p>
-                Barang
-                </p>
+            <a class="nav-link" href="/home">
+              <i class="menu-icon mdi mdi-television"></i>
+              <span class="menu-title">Dashboard</span>
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{ route('artikel.index')}}" class="nav-link">
-              <i class="nav-icon    fa fa-newspaper-o"></i>
-              <p>
-                Artikel
-              </p>
+            <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+              <i class="menu-icon mdi mdi-content-copy"></i>
+              <span class="menu-title">Input Data</span>
+              <i class="menu-arrow"></i>
             </a>
+            <div class="collapse" id="ui-basic">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item">
+                  <a class="nav-link" href="{{ route('barang.index')}}">Barang</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{{ route('kategori.index')}}">Kategori</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{{ route('checkout.index')}}">CheckOut</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{{ route('cart.index')}}">Cart</a>
+                </li>
+              </ul>
+            </div>
           </li>
-          <li class="nav-item">
-            <a href="{{ route('galeri.index')}}" class="nav-link">
-              <i class="nav-icon fa fa-file-picture-o"></i>
-              <p>
-                Galeri
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="{{ route('kategori.index')}}" class="nav-link">
-              <i class="nav-icon    fa fa-plus-circle"></i>
-              <p>
-                Kategori
-                </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="{{ route('kategoriartikel.index')}}" class="nav-link">
-              <i class="nav-icon fa fa-plus-circle"></i>
-              <p>
-                Kategori Artikel
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="{{ route('testimoni.index')}}" class="nav-link">
-              <i class="nav-icon    fa fa-odnoklassniki"></i>
-              <p>
-                Testimoni
-              </p>
-            </a>
-          </li>
-          <li class="nav-header">LABELS</li>
-             <a href="{{ route('logout') }}" onclick="event.preventDefault();
-            document.getElementById('logout-form').submit();" class="nav-link">
-           <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-           {{ csrf_field() }}                             
-           </form>
-          <i class="nav-icon fa fa-sign-out text-danger"></i>
-          <p class="text">Logout</p>
-
-
-            </a>
-          </li> 
         </ul>
       </nav>
-      <!-- /.sidebar-menu -->
-    </div>

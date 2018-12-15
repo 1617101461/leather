@@ -12,6 +12,15 @@
 	<div class="card-body">
 		<form action="{{ route('barang.store') }}" method="post"  enctype="multipart/form-data">
 			{{ csrf_field() }}
+			
+			<div class="form-group {{$errors->has('kode_barang') ? 'has-error' : '' }}">
+				<label class="control-label">Kode Barang</label>
+				<input type="text"  name="kode_barang" class="form-control" required>
+				@if ($errors->has('kode_barang'))
+				<span class="help-block"><strong>{{ $errors->first('kode_barang') }}</strong></span>
+				@endif
+			</div>
+
 			<div class="form-group {{$errors->has('gambar') ? 'has-error' : '' }}">
 				<label class="control-label">Gambar</label>
 				<input type="file" id="gambar" name="gambar" class="validate" accept="image/*" required>
@@ -42,6 +51,14 @@
 				<input type="text"  name="harga" class="form-control" required>
 				@if ($errors->has('harga'))
 				<span class="help-block"><strong>{{ $errors->first('harga') }}</strong></span>
+				@endif
+			</div>
+
+			<div class="form-group {{$errors->has('stok') ? 'has-error' : '' }}">
+				<label class="control-label">Stok</label>
+				<input type="text"  name="stok" class="form-control" required>
+				@if ($errors->has('stok'))
+				<span class="help-block"><strong>{{ $errors->first('stok') }}</strong></span>
 				@endif
 			</div>
 

@@ -11,44 +11,46 @@
 |
 */
 
-Route::get('/', function () {
-    return view('frontends.index');
-});
+
 Route::get('/login', function () {
     return view('layouts.login');
 });
+Route::get('/','FrontEndController@barangs');
+Route::get('/produks/show/{barangs}', 'FrontEndController@show')->name('show');
+Route::get('/shop', 'FrontEndController@all');
+Route::get('/contact', 'FrontEndController@contact');
+Route::get('/registration','FrontEndController@reg');
+Route::post('/registration', 'FrontEndController@create')->name('registration.create');
+Route::get('/log', 'FrontEndController@log');
+Route::get('/category', 'FrontEndController@categ');
+Route::get('/carts', 'FrontEndController@cart');
+Route::get('/confirmation', 'FrontEndController@confir')->name('confirmation.index');
+Route::get('/checkoutss', 'FrontEndController@check');
+Route::post('/checkouts', 'FrontEndController@storeCheck')->name('checkout.store');
+Route::get('/category/{id}', 'FrontEndController@filter_barangs')->name('filter_barangs');
 
+Route::get('/',function (){
+		return view('frontend.index');
+	});
+
+
+//BackEnd
 Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
-
-Route::resource('kategori', 'KategoriController');
-Route::resource('barang', 'BarangController');
-Route::resource('tentang', 'TentangController');
-Route::resource('artikel', 'ArtikelController');
-Route::resource('kategoriartikel', 'KategoriArtikelController');
-
-Route::group(['prefix'=> 'admin', 'middleware' => ['auth','role:admin']], function(){
+Route::group(['middleware' => ['web','auth']], function(){
+	
+	Route::get('/home',function(){
+		if(Auth::user()->admin == 0){
+			return view('frontend.index');
+		} else {
+			$users['users'] = \App\User::all();
+			return view('layouts.admin',$users);
+		}
+	});
     Route::resource('kategori','KategoriController');
     Route::resource('barang','BarangController');
-    Route::resource('tentang','TentangController');
-    Route::resource('artikel','ArtikelController');
-    Route::resource('galeri','GaleriController');
-    Route::resource('testimoni','TestimoniController');
-    Route::resource('kategoriartikel','KategoriArtikelController');
-    Route::resource('tag','TagController');
+    Route::resource('checkout','CheckOutController');
+    Route::resource('cart','CartController');
+    Route::resource('user','UserController');
 });
-Route::get('/contact', function () {
-    return view('frontends.contact');
-});
-Route::get('barang_kategori/{id}', 'BarangController@filter_barangs');
-Route::get('artikel_kategori/{id}', 'ArtikelController@filter_artikels');
-Route::get('/artikels/single/{artikels}', 'FrontEndController@single')->name('single');
-Route::get('/produks/singleproduk/{barangs}', 'FrontEndController@singleproduk')->name('singleproduk');
-Route::get('/produk', 'FrontEndController@barangs')->name('barangs');
-Route::get('/blog', 'FrontEndController@artikels')->name('artikels');
-Route::get('/index', 'FrontEndController@index')->name('index');
-Route::get('/testimoni', 'FrontEndController@testimonis')->name('testimonis');
-Route::get('/galeri', 'FrontEndController@galeris')->name('galeris');
-
 

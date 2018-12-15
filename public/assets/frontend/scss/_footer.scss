@@ -1,176 +1,129 @@
-.footer_area{    
-    background: url("../images/footer.jpg") no-repeat; 
-    position: relative;
-    background-size: cover;
-    background-position: center;
-    z-index: 1;  
-    &:after{
-        content: "";
-        position: absolute;
-        top: 0;
-        background-color: rgba(0, 0, 0, .8);
-        left: 0;
-        right: 0;
-        bottom: 0;
-        display: block;
-        z-index: -1;
+/*============== footer-area css ===============*/
+.single-footer-widget{
+    p{
+        margin-bottom: 0px;
+		color: $pfont;
+		max-width: 235px;
     }
-    .footer_row{
-        padding-top: 95px;
-        padding-bottom: 50px;
-        .footer_about{
-            padding-bottom: 50px;
-            h2{
-                font: 400 18px $os;
-                text-transform: uppercase;
-                color: #fff;
-                padding-bottom: 25px;
-            }
-            img{
-                max-width: 100%;
-            }
-            p{
-                font: 400 14px/26px $os;
-                color: #fefefe;
-                padding-top: 22px;
-            }
-            .socail_icon{
-                padding: 0;
-                margin: 0;
-                padding-top: 25px;
-                li{
-                    display: inline-block;
-                    list-style: none;
-                    padding-left: 8px;
-                    &:first-child{
-                        padding: 0;
-                    }
-                    a{
-                        border: 2px solid $bc;
-                        display: block;
-                        line-height: 26px;
-                        width: 30px;
-                        text-align: center;
-                        position: relative;
-                        z-index: 1;
-                        &:after{
-                            content: "";
-                            position: absolute;
-                            left: 0;
-                            top: 0;
-                            bottom: 0;
-                            right: 0;
-                            background: $bc;
-                            z-index: -1;
-                            transform: scaleY(0); 
-                            transform-origin: 50%; 
-                            transition-property: transform; 
-                            transition-duration: 0.3s; 
-                            transition-timing-function: ease-out
-                        }
-                        i{
-                            font-size: 14px;
-                            color: #fff;
-                            display: inline-block;
-                            padding-top: 7px;
-                        } 
-                        &:hover, &:focus{
-                            &:after{
-                                transform: scaleY(1);
-                            }
-                        }
-                    }
-                }
-            }
-            
-            //quick_link
-            .quick_link{
-                padding: 0;
-                margin: 0;
-                li{
-                    list-style: none;
-                    a{
-                        font: 400 14px/28px $roboto;
-                        color: #fefefe;
-                        position: relative;
-                        padding-left: 30px;
-                        i{
-                            font-size: 14px;
-                            color: $bc;
-                            padding-right: 20px;
-                            position: absolute;
-                            left: 0;
-                            bottom: 0;
-                            @include transition;
-                        }
-                        &:hover, &:focus{
-                            color: $bc;
-                            i{
-                                left: 8px;
-                            }
-                        }
-                    }
-                }
-            }
-            //twitter
-            .twitter{
-                font: 400 14px/28px $roboto;
-                color: #fefefe;
-                display: block;
-                padding-bottom: 15px;
-                &:hover, &:focus{
-                    color: $bc; 
-                }
-            }
-            //address
-            address{
-                p{
-                    font: 400 14px/28px $roboto;
-                    color: #fff;
-                    padding: 0;
-                }
-                .my_address{
-                    padding: 0;
-                    margin: 0;
-                    padding-top: 15px;
-                    li{
-                        list-style: none;
-                        a{ 
-                            font: 400 14px/28px $roboto;
-                            color: #fff; 
-                            i{ 
-                                color: $bc;
-                                padding-right: 20px;
-                                font-size: 14px;
-                                display: inline-block;
-                            }
-                             &:hover, &:focus{
-                                color: $bc; 
-                            }
-                        }
-                        span{
-                            display: inline-block;
-                            padding-left: 35px;
-                            margin-top: -30px;
-                        }
-                    }
+    ul{
+        li{
+            a{
+                line-height: 25px;
+                display: inline-block;
+                color: #777;
+                transition: all 0.3s linear;
+                margin-bottom: 13px;
+                &:hover{
+                    color: $baseColor;
                 }
             }
         }
     }
-    .copyright_area{
-        background: #090909;
-        font: 400 14px/100px $roboto;
-        color: #fefefe;
-        text-align: center;
-        a{
-            font-weight: 700;
-            font-size: 14px;
-            text-transform: uppercase;
-            color: $bc;
-            &:hover, &:focus{
-                color: #fefefe;
-            }
-        } 
+    .instafeed{
+        margin-left: -5px;
+        margin-right: -5px;
+        li{
+            margin: 5px;
+        }
     }
+    .subscribe_form{
+        padding-top: 25px;
+    }
+	.input-group{
+		display: block !important;
+	}
+    input{
+        width: 100%;
+        border: 1px solid #fff;
+        font-size: 13px;
+        line-height: 30px;
+		padding-right: 40px;
+		height: 40px;
+        color: #999999;
+        background: #f9f9ff;
+        padding-left: 20px;
+        @include placeholder{
+            color: #999999;
+        }
+        &:focus{
+            outline: none;
+        }
+    }
+    .sub-btn{
+        background: $baseColor;
+        color: #fff;
+        font-weight: 300;
+        border-radius: 0;
+        line-height: 34px;
+        padding: 4px 11px 0px;
+        cursor: pointer;
+		position: absolute;
+		right: 0px;
+		top: 0px;
+		span{
+			position: relative;
+			top: -1px;
+		}
+    }
+}
+.footer_title{
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 600;
+    color: $dip;
+    margin-bottom: 28px;
+}
+.border_line{
+    width: 100%;
+    height: 1px;
+    background: #333333;
+    margin-top: 30px;
+}
+.footer-bottom{
+    padding-top: 70px;
+    .footer-text{
+		margin-bottom: 0px;
+		i{
+			color: $baseColor;
+		}
+        a{
+            color: $baseColor;
+        }
+    }
+    .footer-social{
+        text-align: right;
+        a{
+            font-size: 18px;
+            line-height: 30px;
+            color: #82848f;
+            margin-left: 25px;
+            transition: all 0.3s linear;
+            &:hover{
+                color: $baseColor;
+            }
+        }
+    }
+}
+
+
+.f_social_wd{
+	p{
+		font-size: 14px;
+		color: $pfont;
+		margin-bottom: 15px;
+	}
+	.f_social{
+		a{
+			font-size: 14px;
+            color: $pfont;
+            transition: all 0.3s linear;
+			margin-right: 20px;
+            &:hover{
+                color: $baseColor;
+            }
+			&:last-child{
+				margin-right: 0px;
+			}
+		}
+	}
 }

@@ -16,6 +16,11 @@ class kategoris extends Model
     {
         return $this->hasOne('App\barangs','id_barangs');
     }
+
+    public function getRouteKeyName()
+    {
+    	return 'slug';
+    }
 }
 
 
