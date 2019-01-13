@@ -44,11 +44,11 @@ class BarangController extends Controller
      */
     public function store(Request $request)
     {
-            Alert::success('Data Successfully Saved','Good Job!')->autoclose(1700);
+            Alert::success('Data Successfully Saved','Good Job!')->autoclose(3000);
 
         $this->validate($request,[
             'kode_barang' => 'required',
-            'gambar' => 'required',
+            'gambar' => 'required|image|mimes:jpg,png,svg,ico,jpng,jpeg',
             'nama_barang' => 'required',
             'deskripsi' => 'required|min:2',
             'harga' => 'required',
@@ -112,11 +112,11 @@ class BarangController extends Controller
      */
     public function update(Request $request, $id)
     {
-            Alert::success('Data Successfully Changed','Good Job!')->autoclose(1700);
+            Alert::success('Data Successfully Changed','Good Job!')->autoclose(3000);
 
         $this->validate($request,[
              'kode_barang' => '',
-             'gambar' => '',
+             'gambar' => 'required|image|mimes:jpg,png,svg,ico,jpng,jpeg',
              'nama_barang' => 'required',
              'deskripsi' => 'required',
              'harga' => 'required',
@@ -164,7 +164,7 @@ class BarangController extends Controller
      */
     public function destroy($id)
     {
-            Alert::success('Data Successfully Deleted','Good Job!')->autoclose(1700);
+            Alert::success('Data Successfully Deleted','Good Job!')->autoclose(3000);
         
         $barangs = barangs::findOrFail($id);
         $barangs->delete();

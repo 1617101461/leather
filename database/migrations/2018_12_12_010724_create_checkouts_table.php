@@ -15,16 +15,17 @@ class CreateCheckoutsTable extends Migration
     {
         Schema::create('checkouts', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nama_depan');
-            $table->string('nama_belakang');
-            $table->integer('telephone');
-            $table->string('email');
-            $table->string('alamat_satu');
-            $table->string('alamat_dua');
-            $table->string('negara');
-            $table->string('kota');
-            $table->string('daerah');
-            $table->integer('kode_pos');
+            $table->string('first_name');
+            $table->string('last_name');
+            $table->string('company_name');
+            $table->integer('phone_number');
+            $table->string('email_address');
+            $table->string('country');
+            $table->string('address');
+            $table->string('town');
+            $table->string('district');
+            $table->integer('post_code');
+            $table->integer('notes');
             $table->timestamps();
         });
     }

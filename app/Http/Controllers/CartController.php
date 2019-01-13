@@ -36,7 +36,7 @@ class CartController extends Controller
         $carts = carts::all();
         $barangs = barangs::all();
         $users = User::all();
-        return view('cart.create',compact('carts', 'barangs','users'));
+        return view('cart.create',compact( 'carts','barangs','users'));
     }
 
     /**
@@ -47,22 +47,24 @@ class CartController extends Controller
      */
     public function store(Request $request)
     {
-        Alert::success('Data Successfully Saved','Good Job!')->autoclose(1700);
+        Alert::success('Data Successfully Saved','Good Job!')->autoclose(3000);
 
         $this->validate($request,[
-            'subtotal' => 'required',
+            'subtotal' => '',
             'id_barangs' => 'required',
             'id_users' => 'required',
-            'slug' => '',
+            'jumlah' => 'required',
 
            
         ]);
 
         $carts = new carts;
-            $carts->stok = $request->subtotal;   
-            $carts->slug =str_slug($request->nama_barang,'-');
+            $carts->subtotal = $request->subtotal;     
             $carts->id_users = $request->id_users;   
             $carts->id_barangs = $request->id_barangs;
+
+            $barangs = barangs::findOrFail($carts->id_barangs);
+            $carts->subtotal = $request->jumlah * $barangs->harga;
             $carts->save();
         return redirect()->route('cart.index');
     }
@@ -103,21 +105,23 @@ class CartController extends Controller
      */
     public function update(Request $request, $id)
     {
-        Alert::success('Data Successfully Changed','Good Job!')->autoclose(1700);
+        Alert::success('Data Successfully Changed','Good Job!')->autoclose(3000);
 
         $this->validate($request,[
              'subtotal' => '',
              'id_users' => 'required',
              'id_barangs' => 'required',
-             'slug' => '',
 
         ]);
 
         $carts = carts::findOrFail($id);
             $carts->subtotal = $request->subtotal;
-            $carts->slug =str_slug($request->nama_barang,'-');
             $carts->subtotal = $request->subtotal;
             $carts->id_users = $request->id_users;
+
+            $barangs = barangs::findOrFail($carts->id_barangs);
+            $carts->subtotal = $request->jumlah * $barangs->harga;
+
             $barangs->save();
         return redirect()->route('cart.index');
     }
@@ -130,7 +134,7 @@ class CartController extends Controller
      */
     public function destroy($id)
     {
-        Alert::success('Data Successfully Deleted','Good Job!')->autoclose(1700);
+        Alert::success('Data Successfully Deleted','Good Job!')->autoclose(3000);
         
         $carts = carts::findOrFail($id);
         $carts->delete();

@@ -14,7 +14,7 @@ class UserController extends Controller
     public function index()
     {
         $datas = User::get();
-        return view('auth.user',compact('datas'));
+        return view('user.index',compact('datas'));
     }
 
     /**

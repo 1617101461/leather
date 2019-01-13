@@ -6,7 +6,7 @@
 	<div class="col-md-12">
 	<div class="card card-primary">
 		<div class="card-header"><b>Tambah Kategori </b>
-		<div class="card-title pull-right"><a href="{{ url()->previous() }}">Kembali</a>
+		<div class="card-title pull-right"><a href="{{ url()->previous() }}"><button type="submit" class="btn btn-primary">Kembali</button></a>
 		</div>
 	</div>
 	<div class="card-body">

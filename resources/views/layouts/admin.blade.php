@@ -24,16 +24,18 @@
   @show
 </head>
 
+
 <body>
+@include('sweet::alert')
   <div class="container-scroller">
     <!-- partial:partials/_navbar.html -->
     <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
       <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
         <a class="navbar-brand brand-logo" href="index.html">
-          <img src="{{asset ('assets/admin/images') }}" alt="logo" />
+          <img src="{{asset ('assets/admin/images/logo.svg') }}" alt="logo" />
         </a>
         <a class="navbar-brand brand-logo-mini" href="index.html">
-          <img src="{{asset ('assets/admin/images') }}" alt="logo" />
+          <img src="{{asset ('assets/admin/images/logo.svg') }}" alt="logo" />
         </a>
       </div>
       <div class="navbar-menu-wrapper d-flex align-items-center">  
@@ -201,6 +203,8 @@
   <!-- inject:js -->
   <script src="{{asset ('assets/admin/js/off-canvas.js') }}"></script>
   <script src="{{asset ('assets/admin/js/misc.js') }}"></script>
+    <script  src="{{ asset('assets/dist/js/sweetalert.min.js')}}"></script>
+
   <!-- endinject -->
   <!-- Custom js for this page-->
   <script src="{{asset ('assets/admin/js/dashboard.js') }}"></script>

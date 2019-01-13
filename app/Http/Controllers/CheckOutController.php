@@ -43,34 +43,36 @@ class CheckOutController extends Controller
      */
     public function store(Request $request)
     {
-        Alert::success('Data Successfully Saved','Good Job!')->autoclose(1700);
+        Alert::success('Data Successfully Saved','Good Job!')->autoclose(3000);
 
         $this->validate($request,[
-            'nama_depan' => 'required',
-            'nama_belakang' => 'required',
-            'telephone' => 'required',
-            'email' => 'required',
-            'alamat_satu' => 'required|min:2',
-            'alamat_dua' => 'required',
-            'negara' => 'required',
-            'kota' => 'required',
-            'daerah' => 'required',
-            'kode_pos' => 'required',
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'company_name' => 'required',
+            'phone_number' => 'required',
+            'email_address' => 'required|min:2',
+            'country' => 'required',
+            'address' => 'required',
+            'town' => 'required',
+            'district' => 'required',
+            'post_code' => 'required',
+            'notes' => 'required',
 
            
         ]);
 
         $checkouts = new checkouts;   
-            $checkouts->nama_depan = $request->nama_depan;
-            $checkouts->nama_belakang = $request->nama_belakang;   
-            $checkouts->telephone = $request->telephone;
-            $checkouts->email = $request->email;
-            $checkouts->alamat_satu = $request->alamat_satu;
-            $checkouts->alamat_dua = $request->alamat_dua;   
-            $checkouts->negara = $request->negara;
-            $checkouts->kota = $request->kota;
-            $checkouts->daerah = $request->daerah;
-            $checkouts->kode_pos = $request->kode_pos;
+            $checkouts->first_name = $request->first_name;
+            $checkouts->last_name = $request->last_name;   
+            $checkouts->company_name = $request->company_name;
+            $checkouts->phone_number = $request->phone_number;
+            $checkouts->email_address = $request->email_address;
+            $checkouts->country = $request->country;   
+            $checkouts->address = $request->address;
+            $checkouts->town = $request->town;
+            $checkouts->district = $request->district;
+            $checkouts->post_code = $request->post_code;
+            $checkouts->notes = $request->notes;
             $checkouts->save();
         return redirect()->route('checkout.index');
     }
@@ -107,33 +109,35 @@ class CheckOutController extends Controller
      */
     public function update(Request $request, $id)
     {
-        Alert::success('Data Successfully Changed','Good Job!')->autoclose(1700);
+        Alert::success('Data Successfully Changed','Good Job!')->autoclose(3000);
 
         $this->validate($request,[
-            'nama_depan' => 'required',
-            'nama_belakang' => 'required',
-            'telephone' => 'required',
-            'email' => 'required',
-            'alamat_satu' => 'required|min:2',
-            'alamat_dua' => 'required',
-            'negara' => 'required',
-            'kota' => 'required',
-            'daerah' => 'required',
-            'kode_pos' => 'required',
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'company_name' => 'required',
+            'phone_number' => 'required',
+            'email_address' => 'required|min:2',
+            'country' => 'required',
+            'address' => 'required',
+            'town' => 'required',
+            'district' => 'required',
+            'post_code' => 'required',
+            'notes' => 'required',
 
         ]);
 
         $checkouts = checkouts::findOrFail($id);
-            $checkouts->nama_depan = $request->nama_depan;
-            $checkouts->nama_belakang = $request->nama_belakang;   
-            $checkouts->telephone = $request->telephone;
-            $checkouts->email = $request->email;
-            $checkouts->alamat_satu = $request->alamat_satu;
-            $checkouts->alamat_dua = $request->alamat_dua;   
-            $checkouts->negara = $request->negara;
-            $checkouts->kota = $request->kota;
-            $checkouts->daerah = $request->daerah;
-            $checkouts->kode_pos = $request->kode_pos;
+            $checkouts->first_name = $request->first_name;
+            $checkouts->last_name = $request->last_name;   
+            $checkouts->company_name = $request->company_name;
+            $checkouts->phone_number = $request->phone_number;
+            $checkouts->email_address = $request->email_address;
+            $checkouts->country = $request->alamat_dua;   
+            $checkouts->address = $request->address;
+            $checkouts->town = $request->town;
+            $checkouts->district = $request->district;
+            $checkouts->post_code = $request->post_code;
+            $checkouts->notes = $request->notes;
             $checkouts->save();
         return redirect()->route('checkout.index');
     }
@@ -146,7 +150,7 @@ class CheckOutController extends Controller
      */
     public function destroy($id)
     {
-        Alert::success('Data Successfully Deleted','Good Job!')->autoclose(1700);
+        Alert::success('Data Successfully Deleted','Good Job!')->autoclose(3000);
         
         $checkouts = checkouts::findOrFail($id);
         $checkouts->delete();

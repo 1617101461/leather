@@ -7,6 +7,8 @@ use App\barangs;
 use App\kategoris;
 use App\checkouts;
 use App\User;
+use App\carts;
+use App\artikels;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -18,7 +20,7 @@ class FrontEndController extends Controller
 
     public function barangs ()
     {
-        $barangs = barangs::all();
+        $barangs = barangs::orderBy('created_at','DESC')->paginate(10);
         $kategoris = kategoris::all();
         return view('frontend.index', compact('barangs','kategoris'));
     }
@@ -30,19 +32,21 @@ class FrontEndController extends Controller
 
     public function cart ()
     {
-        return view('frontend.cart');
+        $carts = carts::all();
+        return view('frontend.cart', compact('carts'));
     }
+
+    public function artikels ()
+    {
+        $artikels = artikels::orderBy('created_at','DESC')->paginate(3);
+        $users = User::all();
+        return view('frontend.blog', compact('artikels','users'));
+    }
+
 
     public function check ()
     {
         return view('frontend.checkout');
-    }
-
-    public function categ ()
-    {
-        $barangs = barangs::all();
-        $kategoris = kategoris::all();
-        return view('frontend.category',compact('barangs','kategoris'));
     }
 
     public function log ()
@@ -60,11 +64,18 @@ class FrontEndController extends Controller
         return view('frontend.confirmation');
     }
 
-    public function all ()
+    public function shop ()
     {
-        $barangs = barangs::orderBy('created_at','DESC')->paginate(6);
-        return view('frontend.shop', compact('barangs'));
+        $barangs = barangs::orderBy('created_at','DESC')->paginate(9);
+        $kategoris = kategoris::all();
+        return view('frontend.shop',compact('barangs','kategoris'));
     }
+
+    public function about ()
+    {
+        return view('frontend.about');
+    }
+
     
      public function show(barangs $barangs)
     {
@@ -72,47 +83,53 @@ class FrontEndController extends Controller
     return view('frontend.show',compact('barangs'));
     }
 
+    public function showblog(artikels $artikels)
+    {
+    
+    return view('frontend.showblog',compact('artikels'));
+    }
     
     public function filter_barangs($id)
     {
-        $barangs = barangs::where('id_kategoris','=',$id)->get();
+        $barangs = barangs::where('id_kategoris','=',$id)->paginate(6);
         $kategoris = $kategoris = kategoris::all();
-        // dd($kategoris);
-        return view('frontend.category', compact('barangs','kategoris'));
+        return view('frontend.shop', compact('barangs','kategoris'));
     }
 
-    public function storeCheck(Request $request)
+    public function store(Request $request)
     {
         Alert::success('Data Successfully Saved','Good Job!')->autoclose(1700);
 
         $this->validate($request,[
-            'nama_depan' => 'required',
-            'nama_belakang' => 'required',
-            'telephone' => 'required',
-            'email' => 'required',
-            'alamat_satu' => 'required|min:2',
-            'alamat_dua' => 'required',
-            'negara' => 'required',
-            'kota' => 'required',
-            'daerah' => 'required',
-            'kode_pos' => 'required',
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'company_name' => 'required',
+            'phone_number' => 'required',
+            'email_address' => 'required|min:2',
+            'country' => 'required',
+            'address' => 'required',
+            'town' => 'required',
+            'district' => 'required',
+            'post_code' => 'required',
+            'notes' => 'required',
 
            
         ]);
 
         $checkouts = new checkouts;   
-            $checkouts->nama_depan = $request->nama_depan;
-            $checkouts->nama_belakang = $request->nama_belakang;   
-            $checkouts->telephone = $request->telephone;
-            $checkouts->email = $request->email;
-            $checkouts->alamat_satu = $request->alamat_satu;
-            $checkouts->alamat_dua = $request->alamat_dua;   
-            $checkouts->negara = $request->negara;
-            $checkouts->kota = $request->kota;
-            $checkouts->daerah = $request->daerah;
-            $checkouts->kode_pos = $request->kode_pos;
+            $checkouts->first_name = $request->first_name;
+            $checkouts->last_name = $request->last_name;   
+            $checkouts->company_name = $request->company_name;
+            $checkouts->phone_number = $request->phone_number;
+            $checkouts->email_address = $request->email_address;
+            $checkouts->country = $request->country;   
+            $checkouts->address = $request->address;
+            $checkouts->town = $request->town;
+            $checkouts->district = $request->district;
+            $checkouts->post_code = $request->post_code;
+            $checkouts->notes = $request->notes;
             $checkouts->save();
-        return redirect()->route('confirmation.index');
+        return redirect()->route('/confirmation');
     }
 
 }

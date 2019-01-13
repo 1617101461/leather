@@ -25,37 +25,41 @@
 
       <div class="card-body">
         <h4 class="card-title">Data CheckOut</h4>
+        <script  src="{{ asset('assets/dist/js/sweetalert.min.js')}}"></script>
+        @include('sweet::alert')
         
         <div class="table-responsive">
           <table class="table table-striped" id="table">
             <thead>
               <tr>
-                <th>Nama Depan</th>
-                <th>Nama Belakang</th>
-                <th>Telephone</th>
-                <th>Email</th>
-                <th>Alamat Satu</th>
-                <th>Alamat Dua</th>
-                <th>Negara</th>
-                <th>Kota</th>
-                <th>Daerah</th>
-                <th>Kode Pos</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Company Name</th>
+                <th>Phone Number</th>
+                <th>Email Address</th>
+                <th>Country</th>
+                <th>Address</th>
+                <th>Town/City</th>
+                <th>District</th>
+                <th>Post Code</th>
+                <th>Notes</th>
                 <th>Action</th>
               </tr>
             </thead>
             <tbody>
               @foreach($checkouts as $data)
               <tr>
-                  <td>{{$data->nama_depan}}</td>
-                  <td>{{$data->nama_belakang}}</td>
-                  <td>{{$data->telephone}}</td>
-                  <td>{{$data->email}}</td>
-                  <td>{{$data->alamat_satu}}</td>
-                  <td>{{$data->alamat_dua}}</td>
-                  <td>{{$data->negara}}</td>
-                  <td>{{$data->kota}}</td>
-                  <td>{{$data->daerah}}</td>
-                  <td>{{$data->kode_pos}}</td>
+                  <td>{{$data->first_name}}</td>
+                  <td>{{$data->last_name}}</td>
+                  <td>{{$data->company_name}}</td>
+                  <td>{{$data->phone_number}}</td>
+                  <td>{{$data->email_address}}</td>
+                  <td>{{$data->country}}</td>
+                  <td>{{$data->address}}</td>
+                  <td>{{$data->town}}</td>
+                  <td>{{$data->district}}</td>
+                  <td>{{$data->post_code}}</td>
+                  <td>{{$data->notes}}</td>
                   <td>
                  <div class="btn-group dropdown">
 

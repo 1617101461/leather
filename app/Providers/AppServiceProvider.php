@@ -15,12 +15,12 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         schema::defaultStringLength(191);
-        view()->composer('frontends.side', function ($view) {
+        view()->composer('frontend.sideartikel', function ($view) {
             // $category = \App\Category::all();
             $recent = \App\artikels::orderBy('created_at', 'desc')->take(4)->get();
             $view->with(compact('recent'));
         });
-        view()->composer('frontends.sideproduk', function ($view) {
+        view()->composer('frontend.sideproduct', function ($view) {
             // $category = \App\Category::all();
             $recent = \App\barangs::orderBy('created_at', 'desc')->take(4)->get();
             $view->with(compact('recent'));

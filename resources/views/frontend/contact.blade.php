@@ -1,54 +1,90 @@
 @extends('layouts.user')
-@section('content')
-    <!--================Header Menu Area =================-->
+@section('content')		
+		<aside id="colorlib-hero" class="breadcrumbs">
+			<div class="flexslider">
+				<ul class="slides">
+			   	<li style="background-image: url(assets/frontend/images/cover-img-1.jpg);">
+			   		<div class="overlay"></div>
+			   		<div class="container-fluid">
+			   			<div class="row">
+				   			<div class="col-md-6 col-md-offset-3 col-sm-12 col-xs-12 slider-text">
+				   				<div class="slider-text-inner text-center">
+				   					<h1>Contact</h1>
+				   					<h2 class="bread"><span><a href="index.html">Home</a></span> <span>Contact</span></h2>
+				   				</div>
+				   			</div>
+				   		</div>
+			   		</div>
+			   	</li>
+			  	</ul>
+		  	</div>
+		</aside>
 
-    <!--================Home Banner Area =================-->
-    <section class="banner_area">
-        <div class="banner_inner d-flex align-items-center">
-            <div class="container">
-                <div class="banner_content text-center">
-                    <h2>Contact Us</h2>
-                    <div class="page_link">
-                        <a href="/">Home</a>
-                        <a href="/contact">Contact Us</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!--================End Home Banner Area =================-->
+		<div id="colorlib-contact">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-10 col-md-offset-1">
+						<h3>Contact Information</h3>
+						<div class="row contact-info-wrap">
+							<div class="col-md-3">
+								<p><span><i class="icon-location"></i></span> 198 West 21th Street, <br> Suite 721 New York NY 10016</p>
+							</div>
+							<div class="col-md-3">
+								<p><span><i class="icon-phone3"></i></span> <a href="tel://1234567920">+ 1235 2355 98</a></p>
+							</div>
+							<div class="col-md-3">
+								<p><span><i class="icon-paperplane"></i></span> <a href="mailto:info@yoursite.com">info@yoursite.com</a></p>
+							</div>
+							<div class="col-md-3">
+								<p><span><i class="icon-globe"></i></span> <a href="#">yoursite.com</a></p>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-10 col-md-offset-1">
+						<div class="contact-wrap">
+							<h3>Get In Touch</h3>
+							<form action="#">
+								<div class="row form-group">
+									<div class="col-md-6 padding-bottom">
+										<label for="fname">First Name</label>
+										<input type="text" id="fname" class="form-control" placeholder="Your firstname">
+									</div>
+									<div class="col-md-6">
+										<label for="lname">Last Name</label>
+										<input type="text" id="lname" class="form-control" placeholder="Your lastname">
+									</div>
+								</div>
 
-    <!--================Contact Area =================-->
-    <!-- Google Maps -->
-<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.496646562009!2d107.5921870142443!3d-6.9505917699763184!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e973bd894a8d%3A0xd0b44a0e6fd7d0ad!2sAS+Leather!5e0!3m2!1sid!2sid!4v1539069525876" width="1355" height="600" frameborder="0" style="border:0" allowfullscreen></iframe>
-    <!-- End Map -->
-    <section class="contact_area p_120">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3">
-                    <div class="contact_info">
-                        <div class="info_item">
-                            <i class="lnr lnr-home"></i>
-                            <h6>Bandung, Jawa Barat</h6>
-                            <p>Jln.Cibaduyut Dalam 1 No.33</p>
-                        </div>
-                        <div class="info_item">
-                            <i class="lnr lnr-phone-handset"></i>
-                            <h6>
-                                <a href="#">(+) 085721055509</a>
-                            </h6>
-                            <p>Mon to Fri 9am to 6 pm</p>
-                        </div>
-                        <div class="info_item">
-                            <i class="lnr lnr-envelope"></i>
-                            <h6>
-                                <a href="#">asleatherofficial@gmail.com</a>
-                            </h6>
-                            <p>Send us your query anytime!</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!--================Contact Area =================-->
+								<div class="row form-group">
+									<div class="col-md-12">
+										<label for="email">Email</label>
+										<input type="text" id="email" class="form-control" placeholder="Your email address">
+									</div>
+								</div>
+
+								<div class="row form-group">
+									<div class="col-md-12">
+										<label for="subject">Subject</label>
+										<input type="text" id="subject" class="form-control" placeholder="Your subject of this message">
+									</div>
+								</div>
+
+								<div class="row form-group">
+									<div class="col-md-12">
+										<label for="message">Message</label>
+										<textarea name="message" id="message" cols="30" rows="10" class="form-control" placeholder="Say something about us"></textarea>
+									</div>
+								</div>
+								<div class="form-group text-center">
+									<input type="submit" value="Send Message" class="btn btn-primary">
+								</div>
+							</form>		
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div id="map" class="colorlib-map"></div>
+
+		@endsection

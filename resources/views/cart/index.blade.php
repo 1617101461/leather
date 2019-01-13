@@ -15,7 +15,7 @@
 
   <div class="col-lg-6">
     <br>
-    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<a href="{{ route('cart.create') }}" class="btn btn-primary btn-rounded btn-fw right"><i class="mdi mdi-plus"></i> Tambah barang</a>
+    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<a href="{{ route('cart.create') }}" class="btn btn-primary btn-rounded btn-fw right"><i class="mdi mdi-plus"></i> Tambah Cart</a>
   </div>
   <div class="col-lg-12">
     @if (Session::has('message'))
@@ -29,26 +29,30 @@
 
       <div class="card-body">
         <h4 class="card-title">Data Barang</h4>
+        <script  src="{{ asset('assets/dist/js/sweetalert.min.js')}}"></script>
+        @include('sweet::alert')
         
         <div class="table-responsive">
           <table class="table table-striped" id="table">
             <thead>
               <tr>
+                <th>Nama Barang</th>
+                <th>Jumlah</th>
+                <th>Nama User</th>
                 <th>Subtotal</th>
-                <th>Slug</th>
                 <th>Action</th>
               </tr>
             </thead>
             <tbody>
               @foreach($carts as $data)
               <tr>
-                <td class="py-1">
-                  {{$data->kode_barang}}</td>
-                  <td>
-                  <img src="{{asset('assets/img/cart/'.$data->gambar)}}" width="78" height="78"></td>
-                  <td>{{$data->subtotal}}</td>
-                 <td> {{$data->slug}}</td>
-                  <td>
+                
+                 <td>{{$data->barangs->nama_barang}}</td>
+                 <td>{{$data->jumlah}}</td>
+                 <td>{{$data->users->name}}</td>
+                 <td>{{$data->subtotal}}</td>
+                
+                <td>
                  <div class="btn-group dropdown">
 
               <a class="btn btn-warning" href="{{ route('cart.edit',$data->id) }}">Edit</a>&nbsp&nbsp&nbsp&nbsp

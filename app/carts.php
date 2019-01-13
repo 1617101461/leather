@@ -8,7 +8,7 @@ class carts extends Model
 {
     protected $table='carts';
 
-    protected $fillable=['id_kategoris','id_users','subtotal'];
+    protected $fillable=['id_barangs','id_users','jumlah','subtotal', 'slug'];
 
     public $timestamps= true;
 
@@ -20,10 +20,5 @@ class carts extends Model
     public function users()
     {
         return $this->belongsTo('App\User','id_users');
-    }
-
-    public function getRouteKeyName()
-    {
-    	return 'slug';
     }
 }

@@ -15,12 +15,12 @@ class CreateCartsTable extends Migration
     {
         Schema::create('carts', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('subtotal');
-            $table->string('slug');
             $table->unsignedInteger('id_barangs');
             $table->foreign('id_barangs')->references('id')->on('barangs')->onDelete('CASCADE');
             $table->unsignedInteger('id_users');
             $table->foreign('id_users')->references('id')->on('users')->onDelete('CASCADE');
+            $table->integer('subtotal');
+            $table->integer('jumlah');
             $table->timestamps();
         });
     }

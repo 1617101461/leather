@@ -8,7 +8,7 @@ class checkouts extends Model
 {
     protected $table='checkouts';
 
-    protected $fillable=['nama_depan','nama_belakang','telephone','email','alamat_satu','alamat_dua','negara','kota','daerah','kode_pos'];
+    protected $fillable=['first_name','last_name','company_name','phone_number','email_address','country','address','town','district','post_code','notes'];
 
     public $timestamps= true;
 

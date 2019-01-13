@@ -12,22 +12,25 @@
 */
 
 
-Route::get('/login', function () {
-    return view('layouts.login');
+Route::get('login', function(){
+	if($authflag) {
+		return view('welcome');
+	}
 });
 Route::get('/','FrontEndController@barangs');
 Route::get('/produks/show/{barangs}', 'FrontEndController@show')->name('show');
-Route::get('/shop', 'FrontEndController@all');
+Route::get('/blogs/showblog/{artikels}', 'FrontEndController@showblog')->name('showblog');
+Route::get('/shop', 'FrontEndController@shop');
+Route::get('/about', 'FrontEndController@about');
+Route::get('/blog', 'FrontEndController@artikels');
 Route::get('/contact', 'FrontEndController@contact');
 Route::get('/registration','FrontEndController@reg');
 Route::post('/registration', 'FrontEndController@create')->name('registration.create');
 Route::get('/log', 'FrontEndController@log');
-Route::get('/category', 'FrontEndController@categ');
-Route::get('/carts', 'FrontEndController@cart');
-Route::get('/confirmation', 'FrontEndController@confir')->name('confirmation.index');
+Route::get('/carts', 'FrontEndController@cart')->name('cart')->middleware('auth');
+Route::get('/confirmation', 'FrontEndController@confir')->name('checkout.index');
 Route::get('/checkoutss', 'FrontEndController@check');
-Route::post('/checkouts', 'FrontEndController@storeCheck')->name('checkout.store');
-Route::get('/category/{id}', 'FrontEndController@filter_barangs')->name('filter_barangs');
+Route::get('/shop/{id}', 'FrontEndController@filter_barangs')->name('filter_barangs');
 
 Route::get('/',function (){
 		return view('frontend.index');
@@ -47,6 +50,7 @@ Route::group(['middleware' => ['web','auth']], function(){
 			return view('layouts.admin',$users);
 		}
 	});
+    Route::resource('artikel','ArtikelController');
     Route::resource('kategori','KategoriController');
     Route::resource('barang','BarangController');
     Route::resource('checkout','CheckOutController');

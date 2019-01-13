@@ -4,8 +4,7 @@
     $('#table').DataTable({
       "iDisplayLength": 10
     });
-
-  } );
+  });
 </script>
 
 @stop
@@ -26,10 +25,10 @@
 <div class="row" style="margin-top: 20px;">
   <div class="col-lg-12 grid-margin stretch-card">
     <div class="card">
-
       <div class="card-body">
         <h4 class="card-title">Data Barang</h4>
-        
+        <script  src="{{ asset('assets/dist/js/sweetalert.min.js')}}"></script>
+        @include('sweet::alert')
         <div class="table-responsive">
           <table class="table table-striped" id="table">
             <thead>
@@ -51,7 +50,7 @@
                 <td class="py-1">
                   {{$data->kode_barang}}</td>
                   <td>
-                  <img src="{{asset('assets/img/barang/'.$data->gambar)}}" width="78" height="78"></td>
+                  <img src="{{asset('assets/img/barang/'.$data->gambar)}}"></td>"
                   <td>{{$data->nama_barang}}</td>
                   <td>{!!$data->deskripsi!!}</td>
                   <td>{{$data->harga}}</td>
